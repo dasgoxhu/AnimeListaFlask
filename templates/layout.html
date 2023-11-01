@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Anime Lista</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="dark-mode">
+    <div class="overlay"></div>
+    <header>
+        <h1 class="header-menu">
+            <img src="{{ url_for('static', filename='icono.png') }}" alt="Icono" class="icono">
+            Anime Lista
+        </h1>
+        <nav>
+            <ul class="header-menu">
+                <li><button class="btn" onclick="window.location='{{ url_for('inicio') }}'">Inicio</button></li>
+                <li><button class="btn" onclick="window.location='{{ url_for('login') }}'">Iniciar Sesion</button></li>
+                <li><button class="btn" onclick="window.location='{{ url_for('usuarios') }}'">Lista Usuarios</button></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="content">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+    <footer>
+        &copy; Dasgoxhu
+    </footer>
+</body>
+</html>

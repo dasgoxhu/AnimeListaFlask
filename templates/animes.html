@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mis Animes</title>
+</head>
+<body class="dark-mode">
+    {% extends "layout.html" %}
+    {% block content %}
+    <div class="form-container">
+        <h1>Mis Animes</h1>
+        <form method="POST">
+            <div class="form-group">
+                <input type="text" name="titulo" placeholder="Título" required>
+            </div>
+            <div class="form-group">
+                <input type="text" name="genero" placeholder="Género">
+            </div>
+            <div class="form-group">
+                <input type="number" name="puntuacion" placeholder="Puntuación" min="0" max="10">
+            </div>
+            <button class="btn" name="action" value="agregar" type="submit">Agregar</button>
+        </form>
+        <table>
+            {% for anime in animes %}
+            <form method="POST">
+                <input type="hidden" name="anime_id" value="{{ anime[0] }}">
+                <div class="form-group">
+                    <a>Título</a>
+                    <input type="text" name="nuevo_titulo" placeholder="Nuevo Título" value="{{ anime[1] }}">
+                </div>
+                <div class="form-group">
+                    <a>Género</a>
+                    <input type="text" name="nuevo_genero" placeholder="Nuevo Género" value="{{ anime[2] }}">
+                </div>
+                <div class="form-group">
+                    <a>Puntuación</a>
+                    <input type="number" name="nueva_puntuacion" placeholder="Nueva Puntuación" min="0" max="10" value="{{ anime[3] }}">
+                </div>
+                <button class="btn" name="action" value="editar" type="submit">Editar</button>
+                <button class="btn" name="action" value="eliminar" type="submit">Eliminar</button>
+            </form>
+            {% endfor %}
+        </table>
+    </div>
+    {% endblock %}
+</body>
+</html>

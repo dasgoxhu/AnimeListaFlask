@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Usuarios</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body class="dark-mode">
+    {% extends "layout.html" %}
+    {% block content %}
+    <div class="form-container">
+        <h1>Usuarios y Sus Animes</h1>
+        <ul class="user-list">
+            {% for usuario in usuarios %}
+                <li>
+                    <h2>{{ usuario.username }}</h2>
+                    <ul class="anime-list">
+                        {% for anime in usuario.animes %}
+                            <li>
+                                <strong>Título:</strong> {{ anime[1] }}
+                            </li>
+                            <li>
+                                <strong>Género:</strong> {{ anime[2] }}
+                            </li>
+                            <li>
+                                <strong>Puntuación:</strong> {{ anime[3] }}
+                            </li>
+                        <br>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,16 @@
+-- Crear la tabla de usuarios
+CREATE TABLE usuarios (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    password VARCHAR(100) NOT NULL
+);
+
+-- Crear la tabla de animes (cada usuario tiene su propia lista de animes)
+CREATE TABLE animes (
+    id SERIAL PRIMARY KEY,
+    user_id INT REFERENCES usuarios(id), -- Clave foránea para vincular con el usuario
+    titulo VARCHAR(100) NOT NULL,
+    genero VARCHAR(50),
+    puntuacion INT
+);
